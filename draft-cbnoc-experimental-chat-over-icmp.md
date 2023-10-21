@@ -1,6 +1,6 @@
 ---
 title: "Chat over ICMP"
-category: experimental
+category: exp
 
 docname: draft-cbnoc-experimental-chat-over-icmp-latest
 submissiontype: IETF
