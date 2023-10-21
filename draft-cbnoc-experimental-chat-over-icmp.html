@@ -1161,7 +1161,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">Chat over ICMP protocol uses extra IP [@RFC791] datagram bytes that are not used by ICMP [@RFC792] to transport messages.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">Chat over ICMP protocol uses extra IP [@!RFC791] datagram bytes that are not used by ICMP [@!RFC792] to transport messages.<a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1186,7 +1186,8 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-format" class="section-name selfRef">Format</a>
         </h3>
 <p id="section-3.1-1">A structure of Chat over ICMP datagram is as follows :<a href="#section-3.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.1-2">0                   1                   2                   3
+<p id="section-3.1-2"><code>
+0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     Type      |     Code      |          Checksum             |
@@ -1196,7 +1197,8 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 |     Topic ( last  3 bytes )                   |  NUL (0x00)   |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     Message ...
-+-+-+-+-+-<a href="#section-3.1-2" class="pilcrow">¶</a></p>
++-+-+-+-+-
+</code><a href="#section-3.1-2" class="pilcrow">¶</a></p>
 <p id="section-3.1-3">IP Fields (derived from ICMP):<a href="#section-3.1-3" class="pilcrow">¶</a></p>
 <p id="section-3.1-4">Addresses<a href="#section-3.1-4" class="pilcrow">¶</a></p>
 <p id="section-3.1-5">The ip address of the source in a chat message will be the

@@ -73,8 +73,8 @@ Table of Contents
 
 1.  Introduction
 
-   Chat over ICMP protocol uses extra IP [@RFC791] datagram bytes that
-   are not used by ICMP [@RFC792] to transport messages.
+   Chat over ICMP protocol uses extra IP [@!RFC791] datagram bytes that
+   are not used by ICMP [@!RFC792] to transport messages.
 
 2.  Conventions and Definitions
 
