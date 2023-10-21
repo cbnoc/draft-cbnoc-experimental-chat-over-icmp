@@ -19,11 +19,10 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
-category: info
+title: "Chat over ICMP"
+category: experimental
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-cbnoc-experimental-chat-over-icmp-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -45,9 +44,9 @@ venue:
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    fullname: hikalium
+    organization: CBNOC
+    email: hikalium@hikalium.com
 
 normative:
 
