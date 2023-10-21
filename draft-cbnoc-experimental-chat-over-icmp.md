@@ -53,9 +53,9 @@ Chat over ICMP protocol uses extra IP [@!RFC791] datagram bytes that are not use
 
 ## Format
 
-A structure of Chat over ICMP datagram is as follows :
+A datagram used in Chat over ICMP protocol is as follows :
 
-```
+~~~
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -67,13 +67,15 @@ A structure of Chat over ICMP datagram is as follows :
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     Message ...
 +-+-+-+-+-
-```
+~~~
+Figure: A message structure of Chat over ICMP protocol
+
 
 IP Fields (derived from ICMP):
 
 Addresses
 
-  The ip address of the source in a chat message will be the
+: The ip address of the source in a chat message will be the
   destination of the chat message.  If a sender wants to
   broadcast the message across the Topic space, the ip address
   of the destination should be a broadcast address.
@@ -82,16 +84,16 @@ IP Fields (derived from ICMP):
 
 Type
 
-  0 for a chat message. In ICMP, this value means an echo reply
+: 0 for a chat message. In ICMP, this value means an echo reply
   message.
 
 Code
 
-  0
+: Always set to 0
 
 Checksum
 
-  The checksum is the 16-bit ones's complement of the one's
+: The checksum is the 16-bit ones's complement of the one's
   complement sum of the ICMP message starting with the ICMP Type.
   For computing the checksum , the checksum field should be zero.
   If the total length is odd, the received data is padded with one
@@ -100,14 +102,14 @@ Checksum
 
 Addresses
 
-  The address of the source in an echo message will be the
+: The address of the source in an echo message will be the
   destination of the echo reply message.  To form an echo reply
   message, the source and destination addresses are simply reversed,
   the type code changed to 0, and the checksum recomputed.
 
 Topic
 
-  The Identifier and Sequence Number fields defined by ICMP is
+: The Identifier and Sequence Number fields defined by ICMP is
   repurposed to represent Topic of the chat. Topic act as an
   identifier of a chat room so the receiver can categorize messages
   based on the value.
