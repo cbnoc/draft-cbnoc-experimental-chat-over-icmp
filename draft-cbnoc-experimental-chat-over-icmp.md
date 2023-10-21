@@ -42,7 +42,7 @@ This document defines a Chat over ICMP protocol.
 
 # Introduction
 
-Chat over ICMP protocol uses extra IP [@RFC791] datagram bytes that are not used by ICMP [@RFC792] to transport messages.
+Chat over ICMP protocol uses extra IP [@!RFC791] datagram bytes that are not used by ICMP [@!RFC792] to transport messages.
 
 
 # Conventions and Definitions
@@ -55,6 +55,7 @@ Chat over ICMP protocol uses extra IP [@RFC791] datagram bytes that are not used
 
 A structure of Chat over ICMP datagram is as follows :
 
+```
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -66,6 +67,7 @@ A structure of Chat over ICMP datagram is as follows :
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     Message ...
 +-+-+-+-+-
+```
 
 IP Fields (derived from ICMP):
 
