@@ -1,0 +1,177 @@
+
+
+
+
+Network Working Group                                           hikalium
+Internet-Draft                                                     CBNOC
+Intended status: Experimental                            21 October 2023
+Expires: 23 April 2024
+
+
+                             Chat over ICMP
+             draft-cbnoc-experimental-chat-over-icmp-latest
+
+Abstract
+
+   This document defines a Chat over ICMP protocol.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://cbnoc.github.io/draft-cbnoc-experimental-chat-over-icmp/
+   draft-cbnoc-experimental-chat-over-icmp.html.  Status information for
+   this document may be found at https://datatracker.ietf.org/doc/draft-
+   cbnoc-experimental-chat-over-icmp/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/cbnoc/draft-cbnoc-experimental-chat-over-icmp.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 23 April 2024.
+
+Copyright Notice
+
+   Copyright (c) 2023 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Specification
+     3.1.  Format
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  Normative References
+   Acknowledgments
+   Author's Address
+
+1.  Introduction
+
+   Chat over ICMP protocol uses extra IP [@RFC791] datagram bytes that
+   are not used by ICMP [@RFC792] to transport messages.
+
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Specification
+
+3.1.  Format
+
+   A structure of Chat over ICMP datagram is as follows :
+
+   0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+   1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
+   Type | Code | Checksum |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
+   Topic ( first 4 bytes ) |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
+   Topic ( last 3 bytes ) | NUL (0x00) |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
+   Message ... +-+-+-+-+-
+
+   IP Fields (derived from ICMP):
+
+   Addresses
+
+   The ip address of the source in a chat message will be the
+   destination of the chat message.  If a sender wants to broadcast the
+   message across the Topic space, the ip address of the destination
+   should be a broadcast address.
+
+   IP Fields (derived from ICMP):
+
+   Type
+
+   0 for a chat message.  In ICMP, this value means an echo reply
+   message.
+
+   Code
+
+   0
+
+   Checksum
+
+   The checksum is the 16-bit ones's complement of the one's complement
+   sum of the ICMP message starting with the ICMP Type.  For computing
+   the checksum , the checksum field should be zero.  If the total
+   length is odd, the received data is padded with one octet of zeros
+   for computing the checksum.  This checksum may be replaced in the
+   future.
+
+   Addresses
+
+   The address of the source in an echo message will be the destination
+   of the echo reply message.  To form an echo reply message, the source
+   and destination addresses are simply reversed, the type code changed
+   to 0, and the checksum recomputed.
+
+   Topic
+
+   The Identifier and Sequence Number fields defined by ICMP is
+   repurposed to represent Topic of the chat.  Topic act as an
+   identifier of a chat room so the receiver can categorize messages
+   based on the value.
+
+4.  Security Considerations
+
+   Chat over ICMP protocol does not define any protection of message
+   bytes.  Therefore, it MUST NOT be used to carry sensitive data which
+   should be securely transported.  An implementation should consider
+   that the data is not protected in any ways and it should give
+   appropriate notice to its users about that risk.
+
+5.  IANA Considerations
+
+   This document has no IANA actions.
+
+6.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+Acknowledgments
+
+   TODO acknowledge.
+
+Author's Address
+
+   hikalium
+   CBNOC
+   Email: hikalium@hikalium.com
