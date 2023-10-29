@@ -105,7 +105,7 @@ Checksum
 Identifer  
 Sequence Number
 
-: Not using it. Anything is fine.
+: Not using it. Anything is fine. But may be zero.
 
 Addresses
 
