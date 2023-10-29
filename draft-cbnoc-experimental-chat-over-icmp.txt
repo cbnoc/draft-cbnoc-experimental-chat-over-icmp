@@ -4,8 +4,8 @@
 
 Network Working Group                                           hikalium
 Internet-Draft                                                     CBNOC
-Intended status: Experimental                            21 October 2023
-Expires: 23 April 2024
+Intended status: Experimental                            29 October 2023
+Expires: 1 May 2024
 
 
                              Chat over ICMP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 April 2024.
+   This Internet-Draft will expire on 1 May 2024.
 
 Copyright Notice
 
@@ -90,17 +90,19 @@ Table of Contents
 
    A datagram used in Chat over ICMP protocol is as follows :
 
-   0                   1                   2                   3
-   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     Type      |     Code      |          Checksum             |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     Topic ( first 4 bytes )                                   |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     Topic ( last  3 bytes )                   |  NUL (0x00)   |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     Message ...
-   +-+-+-+-+-
+0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Type      |     Code      |          Checksum             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|　　　　　　　　　　　　　　　　　　　　　　　Identifer　　　　　　　　　　　　　　　　　　　　　　|        Sequence Number        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Topic ( first 4 bytes )                                   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Topic ( last  3 bytes )                   |  NUL (0x00)   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Message ...
++-+-+-+-+-
 
    Figure: A message structure of Chat over ICMP protocol
 
@@ -124,6 +126,10 @@ Table of Contents
       If the total length is odd, the received data is padded with one
       octet of zeros for computing the checksum.  This checksum may be
       replaced in the future.
+
+   Identifer
+
+   Sequence Number  Not using it.  Anything is fine.
 
    Addresses  The address of the source in an echo message will be the
       destination of the echo reply message.  To form an echo reply
