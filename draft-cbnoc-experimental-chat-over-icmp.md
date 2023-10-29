@@ -102,8 +102,9 @@ Checksum
   octet of zeros for computing the checksum.  This checksum may be
   replaced in the future.
 
-Identifer
+Identifer  
 Sequence Number
+
 : Not using it. Anything is fine.
 
 Addresses
