@@ -61,6 +61,8 @@ A datagram used in Chat over ICMP protocol is as follows :
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     Type      |     Code      |          Checksum             |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|　　　　　　　　　　　　　　　　　　　　　　　Identifer　　　　　　　　　　　　　　　　　　　　　　|        Sequence Number        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     Topic ( first 4 bytes )                                   |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     Topic ( last  3 bytes )                   |  NUL (0x00)   |
@@ -99,6 +101,10 @@ Checksum
   If the total length is odd, the received data is padded with one
   octet of zeros for computing the checksum.  This checksum may be
   replaced in the future.
+
+Identifer
+Sequence Number
+: Not using it. Anything is fine.
 
 Addresses
 
