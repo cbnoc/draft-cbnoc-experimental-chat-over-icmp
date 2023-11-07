@@ -86,8 +86,7 @@ IP Fields (derived from ICMP):
 
 Type
 
-: 0 for a chat message. In ICMP, this value means an echo reply
-  message.
+: 8 for a chat message. In ICMP, this value means an echo message.
 
 Code
 
