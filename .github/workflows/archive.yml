@@ -35,8 +35,3 @@ jobs:
       with:
         make: gh-archive
         token: ${{ github.token }}
-
-    - name: "Save Archive"
-      uses: actions/upload-artifact@v3
-      with:
-        path: archive.json
